@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/jquery.toast.min.css" />
+    <link rel="stylesheet" href="css/vcat.css" />
+    <link rel="stylesheet" href="css/bootstrap-toggle.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.toast.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vcat.js"></script>
+    <script src="js/bootstrap-toggle.min.js"></script>
+    <title>Voice Controlled Accessibility Tool Configuration</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <label class="col-sm-2 col-form-label">Turn VCAT ON/OFF</label>
+            <input type="checkbox" checked data-toggle="toggle" id="vcatonoff" data-offstyle="danger" data-onstyle="primary">
+        </div>
+    </div>
+    <div class="accordion" id="vcataccordion">
+     <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Study Participant Username
+        </button>
+      </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#vcataccordion">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="panel panel-login">
+                                    <div class="panel-heading">
+                                        <hr>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <input type="text" name="username" id="username"class="form-control" placeholder="User-name" value="">
+                                                    </div>
+                                                   
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-4 offset-md-1">
+                                                                <button  id="setusername"  class="form-control btn btn-outline-info" >Set</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-outline-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Auto-complete Configuration 
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#vcataccordion">
+                <div class="card-body">
+                    <div class="container">
+                        <form action="#">
+                            <table id="myTable" class=" table order-list">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td>Key</td>
+                                        <td>Value</td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: left;">
+                                            <input type="button" class="btn btn-outline-info " id="addrow" value="Add Row" />
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <input type="button" class="btn btn-outline-info " id="saveauto" value="Save" />
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-outline-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Remote Server Configuration
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#vcataccordion">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="remoteserver" class="col-sm-2 col-form-label">Remote Server End-point</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="remoteserver" placeholder="Remote Server End-point">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="button" id="remoteserverBtn" class="btn btn-outline-info" value="Save" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-outline-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                        Auto Generate Input
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#vcataccordion">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+
+                            <label for="BadInput" class="col-sm-2 col-form-label">Bad Input</label>
+                            <input type="radio" id="remoteserverBtn" class="btn btn-outline-info" value="Save" />
+                            </div>
+                            <div class="col-sm-6">
+
+                                <label for="Boundry Value Analysis" class="col-sm-2 col-form-label">BVA</label>
+                                <input type="radio" id="remoteserverBtn" class="btn btn-outline-info" value="Save" />
+                                </div>
+
+                           
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <br>
+    <br>
+</body>
+
+</html>

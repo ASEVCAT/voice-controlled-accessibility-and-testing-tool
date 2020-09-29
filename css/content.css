@@ -1,0 +1,25 @@
+.fldset-class{
+    /*border: 1.5px red solid;*/
+     display:inline;
+         border: 0;
+
+     /*padding:1.5px;*/
+}
+.legend-class{
+    border: 1.5px red solid; 
+    background:white;
+    color:black;
+}
+
+.selected-fldset-class{
+    /*border: 1.5px green solid;*/
+     display:inline;
+         border: 0;
+
+     /*padding:1.5px;*/
+}
+.selected-legend-class{
+    border: 1.5px green solid; 
+    background:white;
+    color:black;
+}
