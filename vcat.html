@@ -44,7 +44,7 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <input type="text" name="username" id="username"class="form-control" placeholder="User-name" value="">
+                                                        <input type="text" name="username" id="username"class="form-control" placeholder="Username" value="">
                                                     </div>
                                                    
                                                     <div class="form-group">
@@ -69,7 +69,7 @@
             <div class="card-header" id="headingTwo">
                 <h5 class="mb-0">
                     <button class="btn btn-outline-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Auto-complete Configuration 
+                        Auto-complete Configuration
                     </button>
                 </h5>
             </div>
@@ -134,36 +134,35 @@
         </div>
 
         <div class="card">
-            <div class="card-header" id="headingThree">
+            <div class="card-header" id="headingFour">
                 <h5 class="mb-0">
-                    <button class="btn btn-outline-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                        Auto Generate Input
+                    <button class="btn btn-outline-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Testing Operations
                     </button>
                 </h5>
             </div>
-            <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#vcataccordion">
+
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#vcataccordion">
                 <div class="card-body">
                     <form>
+
+                        <input type="radio" id="operation1" name="operation" value="1">
+                        <label for="operation1">Boundary Value Testing</label>
                         <div class="form-group row">
-                            <div class="col-sm-6">
-
-                            <label for="BadInput" class="col-sm-2 col-form-label">Bad Input</label>
-                            <input type="radio" id="remoteserverBtn" class="btn btn-outline-info" value="Save" />
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="bvalue" name="bvalue" placeholder="Enter boundary value">
                             </div>
-                            <div class="col-sm-6">
-
-                                <label for="Boundry Value Analysis" class="col-sm-2 col-form-label">BVA</label>
-                                <input type="radio" id="remoteserverBtn" class="btn btn-outline-info" value="Save" />
-                                </div>
-
-                           
+                            <div class="col-sm-2">
+                                <input type="button" class="btn btn-outline-info" value="Save" />
+                            </div>
                         </div>
+                        <br>
+                        <input type="radio" id="operation2" name="operation" value="2">
+                        <label for="operation2">Illegal Input</label>
                     </form>
                 </div>
             </div>
         </div>
-
-
     </div>
     <br>
     <br>
