@@ -10,6 +10,72 @@ var start;
 var end;
 var performance = window.performance;
 var studyUsername="default";
+var bValue;
+//var b=0;
+
+// Receive and send boundary value
+
+$(document).ready(function() {
+    $("#setbvalue").click(handler);
+  });
+  function handler() {
+    bValue = document.getElementById('bvalue').value;
+    alert("Received " + bValue);
+  }
+
+/*function b() {
+    bValue = document.getElementById('bvalue').value;
+    alert("Received " + bValue);
+}*/
+
+/*b = document.getElementById("setbvalue");
+if(b=="0")
+{
+    b.addEventListener('click', myFunction);
+}
+bValue = document.getElementById("bvalue");
+if(bValue) {
+    bValue.addEventListener('click', myFunction);
+}
+function myFunction(){
+    alert("Received " + bValue);
+}*/
+
+/*$("#setbvalue").on("click", function() {
+    bValue = document.getElementById('bvalue').value;
+    alert("Received " + bValue);
+});
+function sbv(){
+    bValue = document.getElementById('bvalue').value;
+    alert("Received " + bValue);
+    $("#setbvalue").trigger("click");
+    bValue = document.getElementById('bvalue').value;
+    alert("Received " + bValue);
+}
+chrome.runtime.onMessage.addListener( function(request,sender,sendResponse)
+{
+    if( request.command === "setbvalue" ){
+        sbv();
+    }
+});*/
+
+/*bvalue = document.getElementById('setbvalue').onclick = () => {
+    chrome.tabs.executeScript({code: `
+        bValue = document.getElementById('bvalue').value;
+    `});
+};*/
+
+/*window.addEventListener('load', function load(event) {
+    chrome.storage.local.get('bvalue', function(result) {
+        if (result != undefined && result.bvalue != undefined) {
+            document.getElementById('bvalue').value = result.bvalue;
+            alert("Received " + bValue);
+        }
+    });
+    document.getElementById('setbvalue').onclick = function() {
+        chrome.storage.local.set({'bvalue': document.getElementById('bvalue').value});
+    };
+});*/
 
 function message(command,variable){
     this.command=command;
@@ -98,22 +164,10 @@ chrome.tabs.onCreated.addListener(function(tabs) {
                start=performance.now();
                 chrome.tabs.query({ active: true,currentWindow: true }, function(tabs){
 
-                    var message = { type:'toast',message:'Set search as illegal input'} 
+                    var message = { type:'toast',message:'Generate Test Case'} 
                     chrome.tabs.sendMessage(tabs[0].id,message);
                 });
             },
-
-            '(computer) bad test case': function() {
-            
-                console.log('bad ');
-             
-
-                    var message = { type:'toast',message:'Bad Case'} 
-                    chrome.tabs.sendMessage(tabs[0].id,message);
-                
-            },
-
-
             '(computer) select all *type': function(type) {
                 console.log('calling from command..select all '+type);
                 var cmd = new Command();
@@ -122,11 +176,6 @@ chrome.tabs.onCreated.addListener(function(tabs) {
                 cmd.addCommandWord(matchToCommandList(type),'value');
                 performAction(cmd);
             },
-            '(computer) bad test case': function() {
-                var message = { type:'toast',message:'hello'} 
-                chrome.tabs.sendMessage(tabs[0].id,message);
-               },
-
             /*'(computer) select link *desc': function(desc) {
                 console.log('calling from command..select link '+desc);
                 var cmd = new Command();
@@ -271,6 +320,17 @@ chrome.tabs.onCreated.addListener(function(tabs) {
                 cmd.addCommandWord(value,'value');
                 performAction(cmd); 
             },
+
+            '(computer) set *inputname as boundary value':function(inputname) {
+                alert("Entered" + bValue);
+                console.log('calling from command..set input to '+bValue);
+                var cmd = new Command();
+                cmd.addCommandWord('set','command');
+                cmd.addCommandWord(inputname,'value');
+                cmd.addCommandWord(bValue,'value');
+                performAction(cmd); 
+            },
+
             '(computer) open new tab':function(){
               console.log('calling from command..open new tab ');
                chrome.tabs.create({url:"chrome://newtab"});  
