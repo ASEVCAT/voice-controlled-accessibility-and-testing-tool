@@ -40,5 +40,10 @@ commandList.add("world");
 commandList.add("sir");
 commandList.add("boundary");
 commandList.add("value");
+commandList.add("greater");
+commandList.add("lower");
+commandList.add("big");
+
+
 
 
