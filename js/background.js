@@ -21,7 +21,10 @@ $(document).ready(function() {
   function handler() {
     bValue = document.getElementById('bvalue').value;
     alert("Received " + bValue);
-    localStorage.bvalue=bValue;
+    localStorage.bvalue1=parseInt(bValue)+1;
+    localStorage.bvalue2=parseInt(bValue)-1;
+
+    
   }
 function message(command,variable){
     this.command=command;
@@ -267,9 +270,18 @@ chrome.tabs.onCreated.addListener(function(tabs) {
                 });
             },
 
-            '(computer) set *inputname as boundary':function(inputname) {
-                var bVal= localStorage.bvalue;
-                alert("Entered" + bVal);
+            '(computer) set *inputname as boundary greater':function(inputname) {
+                var bVal= localStorage.bvalue1;
+                console.log('calling from command..set input to '+bVal);
+                var cmd = new Command();
+                cmd.addCommandWord('set','command');
+                cmd.addCommandWord(inputname,bVal);
+                cmd.addCommandWord(bVal,bVal);
+                performAction(cmd); 
+            },
+      
+            '(computer) set *inputname as boundary lower':function(inputname) {
+                var bVal= localStorage.bvalue2;
                 console.log('calling from command..set input to '+bVal);
                 var cmd = new Command();
                 cmd.addCommandWord('set','command');
@@ -663,4 +675,3 @@ function getURL(url){
     }
     return urlStr;
 }
-
