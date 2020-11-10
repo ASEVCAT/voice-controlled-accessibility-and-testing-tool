@@ -1,4 +1,5 @@
 var commandList = FuzzySet();
+commandList.add("illegal");
 commandList.add("set");
 commandList.add("bad");
 commandList.add("select");
@@ -43,6 +44,8 @@ commandList.add("value");
 commandList.add("greater");
 commandList.add("lower");
 commandList.add("big");
+commandList.add("input");
+
 
 
 
