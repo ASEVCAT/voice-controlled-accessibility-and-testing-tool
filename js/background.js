@@ -1,5 +1,6 @@
-//var commandList;
+//code used from https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
 
+//var commandList;
 
 var tabDataStore = {};
  var msg;   
@@ -26,6 +27,29 @@ $(document).ready(function() {
 
     
   }
+
+
+  function gen_illegal() {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var illegal = "*&@#$%^+-={}\|/~?"
+    var charactersLength = characters.length;
+    var illegalLength = illegal.length;
+    for ( var i = 0; i < 8 ; i++ ) {
+
+       var selec =  Math.round(Math.random());
+  
+
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+       result += illegal.charAt(Math.floor(Math.random() * illegalLength));
+
+    
+
+    }
+    return result;
+ }
+ 
+
 function message(command,variable){
     this.command=command;
     this.variable=variable;
@@ -290,14 +314,38 @@ chrome.tabs.onCreated.addListener(function(tabs) {
                 performAction(cmd); 
             },
       
+            // This function calls the function that gens illegal input and places it in an input field.
+            '(computer) set *inputname as illegal input ':function(inputname) {
+                var illegal = gen_illegal();
+                console.log('calling from command..set input to '+illegal);
+                var cmd = new Command();
+                cmd.addCommandWord('set','command');
+                cmd.addCommandWord(inputname,illegal);
+                cmd.addCommandWord(illegal,illegal);
+                performAction(cmd); 
+            },
 
             '(computer) set *inputname as *value':function(inputname,value){
-                console.log('calling from command..set input to '+value);
-                  var cmd = new Command();
-                  cmd.addCommandWord('set','command');
-                  cmd.addCommandWord(inputname,'value');
-                  cmd.addCommandWord(value,'value');
-                  performAction(cmd); 
+                if(value=="illegal")
+                {
+                    var illegal = gen_illegal();
+                    console.log('calling from command..set input to '+"illegal");
+                    var cmd = new Command();
+                    cmd.addCommandWord('set','command');
+                    cmd.addCommandWord(inputname,illegal);
+                    cmd.addCommandWord(illegal,illegal);
+                    performAction(cmd); 
+                }
+                else{
+                
+                    console.log('calling from command..set input to '+illegal);
+                    var cmd = new Command();
+                    cmd.addCommandWord('set','command');
+                    cmd.addCommandWord(inputname,value);
+                    cmd.addCommandWord(value,value);
+                    performAction(cmd); 
+                }
+               
               },
   
        
@@ -320,7 +368,6 @@ chrome.tabs.onCreated.addListener(function(tabs) {
                 cmd.addCommandWord('refresh','command');
                 performAction(cmd); 
             },
-
             '(computer) (go) back':function(){
               console.log('calling from command..refresh ');
                 var cmd = new Command();
