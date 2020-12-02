@@ -6,7 +6,7 @@
  }, function(e) {
      alert('not ok--' + e);
  });
- var default_url='http://ec2-54-237-121-246.compute-1.amazonaws.com:8081/vcat/testcase';
+ var default_url='http://localhost:8081/vcat/testcase';
 
  chrome.storage.sync.set({'remoteserver':default_url}, function() {
     console.log('Remote server set to : ' + default_url);

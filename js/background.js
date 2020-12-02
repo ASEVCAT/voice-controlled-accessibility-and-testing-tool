@@ -12,18 +12,44 @@ var end;
 var performance = window.performance;
 var studyUsername="default";
 var bValue;
+var eValue_low;
+var eValue_high;
 //var b=0;
 
 // Receive and send boundary value
 
 $(document).ready(function() {
     $("#setbvalue").click(handler);
+    $("#setevalue").click(chandler);
+    $("#setevalue1").click(chandler1);
+
   });
   function handler() {
     bValue = document.getElementById('bvalue').value;
     alert("Received " + bValue);
     localStorage.bvalue1=parseInt(bValue)+1;
-    localStorage.bvalue2=parseInt(bValue)-1;
+    localStorage.bvalue2=parseInt(bValue);
+  }
+
+
+  function chandler() {
+  
+    eValue_low = document.getElementById('evalue').value;
+
+    alert("Received " + eValue_low+"  "+eValue_high);
+    localStorage.evalue1=parseInt(eValue_low);
+
+
+    
+  }
+
+  function chandler1() {
+  
+    eValue_high = document.getElementById('evalue1').value;
+
+    alert("Received " + eValue_high+"  "+eValue_high);
+    localStorage.evalue2=parseInt(eValue_high);
+
 
     
   }
@@ -313,6 +339,29 @@ chrome.tabs.onCreated.addListener(function(tabs) {
                 cmd.addCommandWord(bVal,bVal);
                 performAction(cmd); 
             },
+          
+            
+            '(computer) set *inputname as extreme greater':function(inputname) {
+                var eVal= localStorage.evalue2;
+                console.log('calling from command..set input to '+eVal);
+                var cmd = new Command();
+                cmd.addCommandWord('set','command');
+                cmd.addCommandWord(inputname,eVal);
+                cmd.addCommandWord(eVal,eVal);
+                performAction(cmd); 
+            },
+
+               
+            '(computer) set *inputname as extreme lower':function(inputname) {
+                var eVal= localStorage.evalue1;
+                console.log('calling from command..set input to '+eVal);
+                var cmd = new Command();
+                cmd.addCommandWord('set','command');
+                cmd.addCommandWord(inputname,eVal);
+                cmd.addCommandWord(eVal,eVal);
+                performAction(cmd); 
+            },
+      
       
             // This function calls the function that gens illegal input and places it in an input field.
             '(computer) set *inputname as illegal input ':function(inputname) {
@@ -324,6 +373,30 @@ chrome.tabs.onCreated.addListener(function(tabs) {
                 cmd.addCommandWord(illegal,illegal);
                 performAction(cmd); 
             },
+
+
+            '(computer) set *inputname as illegal word':function(inputname) {
+                var illegal = "lasdsd8pqwz";
+                console.log('calling from command..set input to '+illegal);
+                var cmd = new Command();
+                cmd.addCommandWord('set','command');
+                cmd.addCommandWord(inputname,illegal);
+                cmd.addCommandWord(illegal,illegal);
+                performAction(cmd); 
+            },
+
+            
+            '(computer) set *inputname as illegal number':function(inputname) {
+                var illegal = "91z9";
+                console.log('calling from command..set input to '+illegal);
+                var cmd = new Command();
+                cmd.addCommandWord('set','command');
+                cmd.addCommandWord(inputname,illegal);
+                cmd.addCommandWord(illegal,illegal);
+                performAction(cmd); 
+            },
+
+
 
             '(computer) set *inputname as *value':function(inputname,value){
                 if(value=="illegal")
